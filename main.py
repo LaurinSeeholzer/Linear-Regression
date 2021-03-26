@@ -1,54 +1,57 @@
-xwerte = [1,2,3]
-ywerte = [2,4,6]
-xvorgabe = 200
-yprediction = 0
+x_values = [1,2,3]      #given x values
+y_values = [2,4,6]      #given y values
+x_given = 200           #given x value to predict the y value for
+y_prediction = 0
 
-xdurchschnitt = (sum(xwerte))/(len(xwerte))
-ydurchschnitt = (sum(ywerte))/(len(ywerte))
+#calculate the averages of given y and given x values
+x_average = (sum(x_values))/(len(x_values))
+x_average = (sum(y_values))/(len(y_values))
 
-#Zähler von b bestimmen
-Zählerb = 0
+#calculate b1
+b1_counter = 0
 z = 0
-for i in xwerte:
-    x = xwerte[z]
-    y = ywerte[z]
+for i in x_values:
+    x = x_values[z]
+    y = y_values[z]
 
-    zwischenerg1 = (x - xdurchschnitt)
-    zwischenerg2 = (y - ydurchschnitt)
-    erg = (zwischenerg1 * zwischenerg2)
+    valule1 = (x - x_average)
+    valule2 = (y - x_average)
+    result = (valule1 * valule2)
 
-    Zählerb = Zählerb + erg
+    b1_counter = b1_counter + result
     z = z+1
 
-#Nenner von b bestimmen
-Nennerb = 0
+#calculate b2
+b2_counter = 0
 z = 0
-for i in xwerte:
-    x = xwerte[z]
+for i in x_values:
+    x = x_values[z]
 
-    zwischenerg1 = (x - xdurchschnitt)
-    erg = (zwischenerg1 * zwischenerg1)
+    valule1 = (x - x_average)
+    result = (valule1 * valule1)
 
-    Nennerb = Nennerb + erg
+    b2_counter = b2_counter + result
     z = z+1
 
+#calculate b
+b = b1_counter / b2_counter
 
-b = Zählerb / Nennerb
-#a berechnen
-a = ydurchschnitt - (b * xdurchschnitt)
+#calculate a
+a = x_average - (b * x_average)
 
-#Endberechnung
-yprediction = a + (b * xvorgabe)
 
-#Ausgaben
+#maincalculation
+y_prediction = a + (b * x_given)
+
+#output
 z = 0
-for i in xwerte:
-    x = xwerte[z]
-    y = ywerte[z]
+for i in x_values:
+    x = x_values[z]
+    y = y_values[z]
     z = z+1
     print(x,y)
 
 print("")
 print("prediction:")
-print(xvorgabe, yprediction)
+print(x_given, y_prediction)
 print("")
