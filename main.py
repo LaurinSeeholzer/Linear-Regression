@@ -1,3 +1,5 @@
+#made by Laurin Seeholzer
+
 x_values = [1,2,3]      #given x values
 y_values = [2,4,6]      #given y values
 x_given = 200           #given x value to predict the y value for
